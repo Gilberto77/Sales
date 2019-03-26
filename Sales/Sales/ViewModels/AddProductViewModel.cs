@@ -1,6 +1,8 @@
 ﻿namespace Sales.ViewModels
 {
     using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
@@ -20,9 +22,17 @@
         private ApiService apiService;
         private bool isRunning;
         private bool isEnabled;
+        private ObservableCollection<Category> categories;
         #endregion
 
         #region Properties
+        public List<Category> MyCategories { get; set; }
+        public Category Category { get; set; }
+        public ObservableCollection<Category> Categories
+        {
+            get { return this.categories; }
+            set { this.SetValue(ref this.categories, value); }
+        }
 
         public string Description { get; set; }
 
