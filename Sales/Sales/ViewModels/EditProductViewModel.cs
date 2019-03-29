@@ -7,7 +7,10 @@
     using Sales.Helpers;
     using Services;
     using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -20,6 +23,8 @@
         private ApiService apiService;
         private bool isRunning;
         private bool isEnabled;
+        private ObservableCollection<Category> categories;
+        private Category category;
         #endregion
         #region Properties
         public bool IsRunning
@@ -55,6 +60,17 @@
             // Este metodo se encuentra en la BaseViewModel es el que hace que se refresque
             set { this.SetValue(ref this.product, value); }
         }
+        public List<Category> MyCategories { get; set; }
+        public Category Category
+        {
+            get { return this.category; }
+            set { this.SetValue(ref this.category, value); }
+        }
+        public ObservableCollection<Category> Categories
+        {
+            get { return this.categories; }
+            set { this.SetValue(ref this.categories, value); }
+        }
         #endregion
         #region Constructors
         public EditProductViewModel(Product product)
@@ -63,8 +79,10 @@
             this.apiService = new ApiService();
             this.IsEnabled = true;
             this.ImageSource = product.ImageFullPath;
+            this.LoadCategories();
         }
         #endregion
+        
         #region Commands
         public ICommand DeleteCommand
         {
@@ -199,7 +217,14 @@
                     Languages.Accept);
                 return;
             }
-
+            if (this.Category == null)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                Languages.Error,
+                Languages.CategoryError,
+                Languages.Accept);
+                return;
+            }
             this.IsRunning = true;
             this.IsEnabled = false;
 
@@ -215,6 +240,7 @@
                 return;
             }
 
+
             byte[] imageArray = null;
             if (this.file != null)
             {
@@ -222,7 +248,7 @@
                 this.Product.ImageArray = imageArray;
             }
 
-            
+            this.Product.CategoryId = this.Category.CategoryId;
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
@@ -255,6 +281,50 @@
             await App.Navigator.PopAsync();
         }
 
+        #endregion
+        #region Methods
+        private async void LoadCategories()
+        {
+            this.IsRunning = true;
+            this.IsEnabled = false;
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message,
+                Languages.Accept);
+                return;
+            }
+            var answer = await this.LoadCategoriesFromAPI();
+            if (answer)
+            {
+                this.RefreshList();
+            }
+            this.Category = this.MyCategories.FirstOrDefault(c => c.CategoryId == this.Product.CategoryId);
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
+        }
+        private void RefreshList()
+        {
+            this.Categories = new ObservableCollection<Category>(this.MyCategories.OrderBy(c =>
+      c.Description));
+        }
+        private async Task<bool> LoadCategoriesFromAPI()
+        {
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlCategoriesController"].ToString();
+            var response = await this.apiService.GetList<Category>(url, prefix, controller, Settings.TokenType,
+            Settings.AccessToken);
+            if (!response.IsSuccess)
+            {
+                return false;
+            }
+            this.MyCategories = (List<Category>)response.Result;
+            return true;
+        }
         #endregion
     }
 }
