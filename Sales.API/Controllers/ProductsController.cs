@@ -29,7 +29,7 @@
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> GetProduct(int id)
         {
-            var products  = await db.Products.Where(p=> p.CategoryId == id).ToListAsync();
+            var products  = await this.db.Products.Where(p=> p.CategoryId == id).ToListAsync();
            return Ok(products);
         }
 

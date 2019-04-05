@@ -20,6 +20,7 @@ namespace Sales.Views
         {
             base.OnAppearing();
             App.Navigator = Navigator;
+            App.Master = this;  
         }
 
     }

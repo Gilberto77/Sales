@@ -63,9 +63,10 @@
         [Required]
         [StringLength(128)]
         public string UserId { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude{get; set;}
 
-        
-        [ForeignKey("CategoryId")]
+            [ForeignKey("CategoryId")]
         [JsonIgnore]
         public virtual Category Category { get; set; }
         
@@ -81,7 +82,7 @@
                 {
                     return "NoProduct";
                 }
-                return $"https://salesapi20181215084028.azurewebsites.net/{this.ImagePath.Substring(1)}";
+                return $"https://salesapi20181215084028.azurewebsites.net{this.ImagePath.Substring(1)}";
             }
         }
 

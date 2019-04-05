@@ -8,9 +8,7 @@
         [Key]
         public int CategoryId { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Nombre{ get; set; }
+        // [Required]  [StringLength(50)] public string Nombre{ get; set; }
 
         [Required]
         [StringLength(50)]
@@ -32,7 +30,7 @@
             {
                     return "noproduct";
                 }
-                return $"https://salesbackend20181215081959.azurewebsites.net { this.ImagePath.Substring(1)} ";
+                return $"https://salesbackend20181215081959.azurewebsites.net{this.ImagePath.Substring(1)}";
             }
         }
     }

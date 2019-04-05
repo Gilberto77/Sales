@@ -327,6 +327,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Categories\calcetines.jpg" />
+    <Content Include="Content\Categories\frijol.jpg" />
+    <Content Include="Content\Categories\google.png" />
+    <Content Include="Content\Categories\images.jpg" />
+    <Content Include="Content\Categories\Naranjas.jpg" />
+    <Content Include="Content\Categories\servicios.jpg" />
     <Content Include="Content\Products\180105_mw6eh_cilantro_sn635.jpg" />
     <Content Include="Content\Products\CILANTRO-EMM-500-Slobolt.png" />
     <Content Include="Content\Products\images.jpg" />

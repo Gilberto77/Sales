@@ -1,5 +1,4 @@
-﻿
-namespace Sales.API.Controllers
+﻿namespace Sales.API.Controllers
 {
     using System.Linq;
     using System.Web.Http;

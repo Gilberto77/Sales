@@ -17,20 +17,6 @@ public async Task<ActionResult> Index()
         {
             return View(await db.Categories.OrderBy(c => c.Description).ToListAsync());
         }
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var category = await db.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-       
         public ActionResult Create()
         {
             return View();
@@ -59,7 +45,7 @@ public async Task<ActionResult> Index()
         {
             return new Category
             {
-                Nombre=view.Nombre,
+                //Nombre=view.Nombre,
                 CategoryId = view.CategoryId,
                 Description = view.Description,
                 ImagePath = pic,

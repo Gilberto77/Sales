@@ -63,7 +63,7 @@
         {
             instance = this;
             this.Category = category;
-            // instancia para consumirnos los servicios spi
+            // instancia para consumirnos los servicios spi 
             this.apiService = new ApiService();
             this.dataService = new DataService();
             this.LoadProducts();
@@ -119,8 +119,7 @@
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
-            var response = await this.apiService.GetList<Product>(url, prefix, controller,
-            this.Category.CategoryId, Settings.TokenType, Settings.AccessToken);
+            var response = await this.apiService.GetList<Product>(url, prefix, controller, this.Category.CategoryId, Settings.TokenType, Settings.AccessToken);
             if (!response.IsSuccess)
             {
                 return false;
