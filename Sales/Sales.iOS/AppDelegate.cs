@@ -20,7 +20,8 @@
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-         ImageCircleRenderer.Init();
+            Xamarin.FormsMaps.Init();
+            ImageCircleRenderer.Init();
             return base.FinishedLaunching(app, options);
         }
     }
