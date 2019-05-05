@@ -265,4 +265,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\nouser.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_contacto.png" />
+  </ItemGroup>
 </Project>

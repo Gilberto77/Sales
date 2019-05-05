@@ -9,7 +9,7 @@
     using ImageCircle.Forms.Plugin.Droid;
 
     [Activity
-        (Label = "Soy Ambulante", 
+        (Label = "Mi Mercadito", 
         Icon = "@drawable/ic_launcher",
         Theme = "@style/MainTheme", 
         MainLauncher = false, 

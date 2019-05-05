@@ -73,7 +73,6 @@
                                         Grid.Column="3"
                                         Source="ic_chevron_right"
                                         VerticalOptions="Center">
-                                        
                                     </Image>
                                 </Grid>
                             </ViewCell>

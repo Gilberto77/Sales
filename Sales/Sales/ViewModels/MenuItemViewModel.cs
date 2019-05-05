@@ -41,6 +41,11 @@ namespace Sales.ViewModels
                 App.Master.IsPresented = false;
                 await App.Navigator.PushAsync(new MapPage());
             }
+            else if (this.PageName == "SetupPage")
+            {
+                App.Master.IsPresented = false;
+                await App.Navigator.PushAsync(new PerfilPage());
+            }
         }
     }
 }

@@ -318,6 +318,14 @@
         {
             get { return Resource.CategoryError; }
         }
-
+        public static string TelephoneError
+        {
+            get { return Resource.TelephoneError; }
+        }
+        public static string DireccionError
+        {
+            get { return Resource.DireccionError; }
+        }
+    
     }
 }

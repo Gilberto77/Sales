@@ -3,7 +3,7 @@
      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
      xmlns:i18n="clr-namespace:Sales.Helpers"
      x:Class="Sales.Views.CategoriesPage"
-     BackgroundColor="LightGreen"
+     BackgroundColor="LightSkyBlue"
      BindingContext="{Binding Main, Source={StaticResource Locator}}"
               Title="{i18n:Translate Categories}">
     <ContentPage.Content>

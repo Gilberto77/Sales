@@ -214,6 +214,15 @@ namespace Sales.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You must enter your address.
+        /// </summary>
+        public static string DireccionError {
+            get {
+                return ResourceManager.GetString("DireccionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Edit.
         /// </summary>
         public static string Edit {
@@ -633,6 +642,15 @@ namespace Sales.Resources {
         public static string SomethingWrong {
             get {
                 return ResourceManager.GetString("SomethingWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a you must enter  seven digit of number telephone.
+        /// </summary>
+        public static string TelephoneError {
+            get {
+                return ResourceManager.GetString("TelephoneError", resourceCulture);
             }
         }
         

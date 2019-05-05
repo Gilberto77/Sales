@@ -12,7 +12,7 @@
             Padding="5">
                 <Image
                     Source="{Binding ImageSource}">
-                    <Image.GestureRecognizers   >
+                    <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
                     </Image.GestureRecognizers>
                 </Image>

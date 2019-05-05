@@ -82,7 +82,7 @@
                 {
                     return "NoProduct";
                 }
-                return $"https://salesapi20181215084028.azurewebsites.net{this.ImagePath.Substring(1)}";
+                return $"https://salesbackend20190501111214.azurewebsites.net{this.ImagePath.Substring(1)}";
             }
         }
 

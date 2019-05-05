@@ -18,6 +18,7 @@
         public EditProductViewModel EditProduct { get; set; }
         public ProductsViewModel Products { get; set; }
         public MyUserASP UserASP { get; set; }
+        public PerfilViewModel Perfil { get; set; }
         public AddProductViewModel AddProduct { get; set; }
         public RegisterViewModel Register { get; set; }
      
@@ -33,7 +34,7 @@
                     {
                         if (claim.ClaimValue.StartsWith("~"))
                         {
-                            return $"https://salesapi20181215084028.azurewebsites.net{claim.ClaimValue.Substring(1)}";
+                            return $"https://salesapi20190430115441.azurewebsites.net{claim.ClaimValue.Substring(1)}";
                         }
                         return claim.ClaimValue;
                     }
