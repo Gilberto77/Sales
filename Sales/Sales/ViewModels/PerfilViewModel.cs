@@ -1,13 +1,17 @@
-﻿namespace Sales.ViewModels
+﻿
+
+namespace Sales.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
     using Sales.Helpers;
+    using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
-    
+
     public class PerfilViewModel : BaseViewModel
     {
         #region Attributes
+        private ApiService apiService;
         private bool isRunning;
         private bool isEnabled;
 
@@ -36,6 +40,7 @@
         #region Constructors
         public PerfilViewModel()
         {
+            this.apiService = new ApiService();
             this.IsEnabled = true;
         }
 
@@ -54,8 +59,8 @@
             if (string.IsNullOrEmpty(this.Telefono))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error, 
-                    Languages.TelephoneError, 
+                    Languages.Error,
+                    Languages.PhoneError,
                     Languages.Accept);
                 return;
             }
@@ -63,7 +68,7 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    Languages.DireccionError,
+                    Languages.AddressPlaceHolder,
                     Languages.Accept);
                 return;
             }
@@ -74,6 +79,17 @@
                     Languages.Error,
                     Languages.TelephoneError,
                     Languages.Accept);
+                return;
+            }
+            this.isRunning = true;
+            this.IsEnabled = false;
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.isRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message,
+                Languages.Accept);
                 return;
             }
         }

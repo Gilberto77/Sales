@@ -61,6 +61,7 @@
         #region Constructors
         public MainViewModel()
         {
+            this.Perfil = new PerfilViewModel();
             this.Categories = new CategoriesViewModel();
             instance = this;
             this.LoadMenu();

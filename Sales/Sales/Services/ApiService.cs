@@ -8,7 +8,7 @@
     using Plugin.Connectivity;
     using Common.Models;
     using Helpers;
-    using System.Text;
+    using System.Text;  
     using System.Net.Http.Headers;
 
     public class ApiService
@@ -25,7 +25,7 @@
                 };
 
             }
-            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("https://www.google.com.mx/");
             if (!isReachable)
             {
                 return new Response
